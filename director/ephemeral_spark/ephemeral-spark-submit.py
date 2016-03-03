@@ -117,7 +117,7 @@ def main():
     print 'Waiting for the cluster to be ready. Check the web interface for details.'
     cluster.wait_for_cluster(client, args.environment, args.cm, cluster_name)
     client = ApiClient(args.server)
-    AuthenticationApi(client).login(Login(username="admin", password="admin"))
+    AuthenticationApi(client).login(Login(username=args.admin_username, password=args.admin_password))
     clusters = ClustersApi(client)
     eph_cluster = clusters.get(args.environment,args.cm,cluster_name)
     instances = eph_cluster.instances
